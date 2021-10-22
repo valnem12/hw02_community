@@ -1,0 +1,25 @@
+<!--Main page with last 10 blogs sorted by date fron the latest-->
+
+{% extends 'base.html' %} 
+
+{% block content %} 
+<!-- Blog Entries Column -->  
+
+    {% for post in posts %}
+        <div class="card mb-4">
+            <div class="card-body">                               
+                <h4 class="card-title">{{ post.author }}</h4>
+                <p class="card-text text-muted h10">{{ post.pub_date| date:"d E Y" }}</p>
+                <p></p>
+                <p class="card-text">{{ post.text|linebreaksbr }}</p>
+                                            
+                {% if post.group %}
+                    <a href="{% url 'posts:group_list' post.group.slug %}">
+                        все записи группы
+                    </a>
+                {% endif %}        
+                </div>                             
+        </div>
+    {% endfor %}                    
+
+{% endblock %} 

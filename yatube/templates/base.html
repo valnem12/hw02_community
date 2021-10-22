@@ -1,0 +1,52 @@
+<!DOCTYPE html> <!-- Используется html 5 версии -->
+<html lang="ru"> <!-- Язык сайта - русский -->
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<head>    
+      <meta charset="utf-8"> <!-- Кодировка сайта -->
+      <!-- Сайт готов работать с мобильными устройствами -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Загружаем фав-иконки -->
+
+      <link rel="icon" href={% static "img/fav/favicon.ico" %} type="image">
+      <link rel="apple-touch-icon" sizes="180x180" href={% static "img/fav/apple-touch-icon.png" %}>
+      <link rel="icon" type="image/png" sizes="32x32" href={% static "img/fav/favicon-32x32.png" %}>
+      <link rel="icon" type="image/png" sizes="16x16" href={% static "img/fav/favicon-16x16.png" %}>
+      <meta name="msapplication-TileColor" content="#000">
+      <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<header>
+  <div class="container-fluid">
+      <div class="row">
+        {% include 'includes/header.html' %}
+      </div>
+  </div>    
+</header>
+
+<style>
+        .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+
+<div class="container">
+    <div class="row">    
+            <div class="col-8">  
+                {% block title%}  
+                    <p></p>
+                    <h3 >Последние обновления на сайте</h3>
+                    <p></p>
+                {% endblock %}    
+            </div>   
+
+{% block content %}
+       <h6>Empty</h6>
+{% endblock %}  
+
+<footer>
+  {% include 'includes/footer.html' %} 
+</footer>

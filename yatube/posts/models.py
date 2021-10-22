@@ -1,4 +1,3 @@
-from enum import unique
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -7,6 +6,8 @@ User = get_user_model()
 
 
 class Group(models.Model):
+    """Defines the Group table"""
+
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     description = models.TextField()
@@ -16,6 +17,8 @@ class Group(models.Model):
 
 
 class Post(models.Model):
+    """defines Post table with descrement order by dates"""
+
     text = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
@@ -24,13 +27,11 @@ class Post(models.Model):
         related_name='posts'
     )
     group = models.ForeignKey(
-        Group, 
+        Group,
         on_delete=models.CASCADE,
         related_name="posts",
         blank=True,
         null=True)
 
-
     class Meta:
-        ordering = ['-pub_date']    
-    
+        ordering = ['-pub_date']

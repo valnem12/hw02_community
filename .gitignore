@@ -146,3 +146,13 @@ dmypy.json
 .history/
 
 .mypy_cache
+yatube/static/css/bootstrap.min.css
+yatube/static/img/logo.png
+yatube/static/img/fav/android-chrome-192x192.png
+yatube/static/img/fav/android-chrome-256x256.png
+yatube/static/img/fav/apple-touch-icon.png
+yatube/static/img/fav/favicon-16x16.png
+yatube/static/img/fav/favicon-32x32.png
+yatube/static/img/fav/favicon.ico
+yatube/static/img/fav/mstile-150x150.png
+yatube/static/img/fav/safari-pinned-tab.svg

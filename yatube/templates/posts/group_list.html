@@ -1,29 +1,22 @@
 <!--Group posts filtered by group-->
 
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block title %}
-    <h1>Записи сообщества {{ group.title }}</h1>  
-{% endblock %} 
+    {% block title %}
+        <h1>Записи сообщества {{ group.title }}</h1>
+    {% endblock %}
 
-{% block content %}
-<!-- Blog Entries Column -->  
+    {% block content %}
+    <!-- Blog Entries Column -->
 
         {% for post in posts_by_group %}
-            <!--дата публикации:{{ post.pub_date|date:"d E Y" }}-->
-            <!--Автор: {{ post.author }}-->
             <div class="card mb-4">
-                <div class="card-body"> 
+                <div class="card-body">
                     <h4 class="card-title">Автор: {{ post.author.get_full_name }}</h4>
-                    <p class="card-text text-muted h10">Дата публикации: {{ post.pub_date|date:"d E Y" }}</p>                              
-                    <p class="card-text">{{ post.text }}</p>     
-                </div>                             
+                    <p class="card-text text-muted h10">Дата публикации: {{ post.pub_date|date:"d E Y" }}</p>
+                    <p class="card-text">{{ post.text }}</p>
+                </div>
             </div>
-        {% endfor %}             
+        {% endfor %}
 
-    </div>
-</div>          
-
-{% endblock %} 
-
-   
+{% endblock %}

@@ -9,14 +9,12 @@
 {% block content %}
 <!-- Blog Entries Column -->
 
-  {% for post in posts_by_group %}
-    <div class="card mb-4">
-      <div class="card-body">
-        <h4 class="card-title">Автор: {{ post.author.get_full_name }}</h4>
-        <p class="card-text text-muted h10">Дата публикации: {{ post.pub_date|date:"d E Y" }}</p>
-        <p class="card-text">{{ post.text }}</p>
-      </div>
-    </div>
-  {% endfor %}
+  {% block content3 %}
+    {{ post.text|linebreaksbr }}
+  {% endblock %}
 
+  {% for post in posts_by_group %}
+    {{ block.super }}
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
 {% endblock %}

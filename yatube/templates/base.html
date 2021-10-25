@@ -22,34 +22,38 @@
 </head>
 
 <header>
-  <div class="container-fluid">
-    <div class="row">
-      {% include 'includes/header.html' %}
-    </div>
-  </div>
+  {% include 'includes/header.html' %}
 </header>
 
-<style>
-  .card {
-    box-shadow: 0 16px 48px #E3E7EB;
-  }
-</style>
+<body>
+  <main>
+    <div class="container">
 
-<div class="container">
-  <div class="row">
-    <div class="col-8">    
-      {% block title%}
-        <hr style="height:0px;background-color: #FFF8DC;">
-        <h3 style="background-color:#FFF8DC;">Последние обновления на сайте</h3>
-        <hr style="width:0">
+      {% block title %}
+        <h1>Последние обновления на сайте</h1>
+      {% endblock %} 
+
+      {% block content %}     
+        <article>
+          <ul>
+            <li>
+              {% block content1 %}Автор: {{post.author.get_full_name }}{% endblock %}
+            </li>
+            <li>
+              <p style="color:gray">
+                {% block content2 %}Дата публикации: {{ post.pub_date|date:'d E Y' }}{% endblock %}
+              </p>
+            </li>
+          </ul>
+          <p>
+            {% block content3 %}{% endblock %}
+          </p>
+        </article>       
       {% endblock %}
     </div>
-    {% block content %}
-      <h6>Empty</h6>
-    {% endblock %}
-  </div>
-</div>
+  </main>
 
-<footer>
-  {% include 'includes/footer.html' %}
-</footer>
+  <footer>
+    {% include 'includes/footer.html' %}
+  </footer>
+</body>

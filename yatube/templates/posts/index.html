@@ -3,23 +3,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Blog Entries Column -->
+  <!-- Blog Entries Column -->
+  {% block content1 %}  
+    {{ post.author }}
+  {% endblock %}
 
-  {% for post in posts %}
-    <div class="card mb-4">
-      <div class="card-body">
-        <h4 class="card-title">{{ post.author }}</h4>
-        <p class="card-text text-muted h10">{{ post.pub_date| date:"d E Y" }}</p>
-        <p></p>
-        <p class="card-text">{{ post.text|linebreaksbr }}</p>
+  {% block content2 %}
+    {{ post.pub_date|date:'d E Y '}}
+  {% endblock %}
 
-        {% if post.group %}
-          <a href="{% url 'posts:group_list' post.group.slug %}">
-            все записи группы
-          </a>
-        {% endif %}
-      </div>
-    </div>
+  {% block content3 %}
+    {{ post.text|linebreaksbr }}
+  {% endblock %}
+
+  {% for post in posts %} 
+    {{ block.super }}
+    {% if post.group %}  
+      <a href={% url 'posts:group_list' post.group.slug %}>все записи группы "{{ post.group.title }}"</a>
+    {% endif %}  
+
+    {% if not forloop.last %}<hr>{% endif %}      
+    
   {% endfor %}
-
 {% endblock %}

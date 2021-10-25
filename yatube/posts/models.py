@@ -19,17 +19,21 @@ class Group(models.Model):
 class Post(models.Model):
     """defines Post table with descrement order by dates"""
 
-    text = models.TextField()
-    pub_date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(verbose_name='post text')
+    pub_date = models.DateTimeField(
+        auto_now_add=True, 
+        verbose_name='post publication date')
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='posts'
+        related_name='posts',
+        verbose_name='author name'
     )
     group = models.ForeignKey(
         Group,
         on_delete=models.SET_NULL,
-        related_name="posts",
+        related_name='relevant_group',
+        verbose_name='relevant group',
         blank=True,
         null=True)
 

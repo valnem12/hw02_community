@@ -21,7 +21,7 @@ class Post(models.Model):
 
     text = models.TextField(verbose_name='post text')
     pub_date = models.DateTimeField(
-        auto_now_add=True, 
+        auto_now_add=True,
         verbose_name='post publication date')
     author = models.ForeignKey(
         User,

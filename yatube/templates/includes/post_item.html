@@ -1,0 +1,26 @@
+
+<!--Repeated Article Elements-->
+
+<article>
+  <ul>
+    <li>
+      Автор: {{ post.author.get_full_name|default:post.author }}
+    </li>
+    <li>
+      Дата публикации: {{ post.pub_date|date:'d E Y' }}
+    </li>
+  </ul>
+  <p>{{ post.text|linebreaksbr }}</p>
+
+  {% if request.path == '/' and post.group %}
+    <a href='{% url 'posts:group_list' post.group.slug %}'>
+      все записи группы {{ post.group.slug }}
+    </a>
+  {% endif %}
+
+  {% if not forloop.last%}
+    <hr style='height:2px;background-color:black;'>
+  {% endif %}
+
+</article>
+

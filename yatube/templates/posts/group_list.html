@@ -4,17 +4,16 @@
 
 {% block title %}
   <h1>Записи сообщества {{ group.title }}</h1>
+  <p></p>
+  <p>Группа тайных поклонников {{ group.slug }}
+  <p></p>
 {% endblock %}
 
 {% block content %}
 <!-- Blog Entries Column -->
 
-  {% block content3 %}
-    {{ post.text|linebreaksbr }}
-  {% endblock %}
+{% for post in posts_by_group %}
+  {% include 'includes/post_item.html' %}
+{% endfor %}
 
-  {% for post in posts_by_group %}
-    {{ block.super }}
-    {% if not forloop.last %}<hr>{% endif %}
-  {% endfor %}
 {% endblock %}

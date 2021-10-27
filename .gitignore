@@ -156,3 +156,6 @@ yatube/static/img/fav/favicon-32x32.png
 yatube/static/img/fav/favicon.ico
 yatube/static/img/fav/mstile-150x150.png
 yatube/static/img/fav/safari-pinned-tab.svg
+yatube/templates/posts/group_list copy.html
+yatube/templates/posts/index copy.html
+yatube/templates/base copy.html

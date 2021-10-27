@@ -6,7 +6,7 @@ User = get_user_model()
 
 
 class Group(models.Model):
-    """Defines the Group table"""
+    """Defines the Group table."""
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
@@ -17,25 +17,24 @@ class Group(models.Model):
 
 
 class Post(models.Model):
-    """defines Post table with descrement order by dates"""
+    """defines Post table with descrement order by dates."""
 
-    text = models.TextField(verbose_name='post text')
+    text = models.TextField()
     pub_date = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='post publication date')
+        auto_now_add=True
+    )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='posts',
-        verbose_name='author name'
+        related_name='posts'
     )
     group = models.ForeignKey(
         Group,
         on_delete=models.SET_NULL,
-        related_name='relevant_group',
-        verbose_name='relevant group',
+        related_name='group_posts',
         blank=True,
-        null=True)
+        null=True
+    )
 
     class Meta:
-        ordering = ['-pub_date']
+        ordering = ('-pub_date',)

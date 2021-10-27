@@ -4,7 +4,7 @@ from .models import Post, Group
 
 
 def index(request):
-    """Main page - dispalying the latest ten posts"""
+    """Main page - dispalying the latest ten posts."""
 
     template = 'posts/index.html'
     posts = Post.objects.all()[:10]
@@ -15,12 +15,12 @@ def index(request):
 
 
 def group_posts(request, slug):
-    """Filters by group and displays ten latest posts"""
+    """Filters by group and displays ten latest posts."""
 
     template = 'posts/group_list.html'
     group = get_object_or_404(Group, slug=slug)
     posts_by_group = (group
-                      .relevant_group
+                      .group_posts
                       .filter(group=group)[:10])
     context = {
         'group': group,

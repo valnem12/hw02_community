@@ -2,27 +2,16 @@
 
 {% extends 'base.html' %}
 
+{% block title%}
+  <h1>Последние обновления на сайте</h1>
+  <p></p>
+{% endblock %}
+
 {% block content %}
-  <!-- Blog Entries Column -->
-  {% block content1 %}  
-    {{ post.author }}
-  {% endblock %}
+<!-- Blog Entries Column -->
 
-  {% block content2 %}
-    {{ post.pub_date|date:'d E Y '}}
-  {% endblock %}
-
-  {% block content3 %}
-    {{ post.text|linebreaksbr }}
-  {% endblock %}
-
-  {% for post in posts %} 
-    {{ block.super }}
-    {% if post.group %}  
-      <a href={% url 'posts:group_list' post.group.slug %}>все записи группы "{{ post.group.title }}"</a>
-    {% endif %}  
-
-    {% if not forloop.last %}<hr>{% endif %}      
-    
+  {% for post in posts %}
+    {% include 'includes/post_item.html' %}
   {% endfor %}
+
 {% endblock %}

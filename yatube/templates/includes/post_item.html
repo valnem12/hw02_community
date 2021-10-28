@@ -11,16 +11,5 @@
     </li>
   </ul>
   <p>{{ post.text|linebreaksbr }}</p>
-
-  {% if request.path == '/' and post.group %}
-    <a href='{% url 'posts:group_list' post.group.slug %}'>
-      все записи группы {{ post.group.slug }}
-    </a>
-  {% endif %}
-
-  {% if not forloop.last%}
-    <hr style='height:2px;background-color:black;'>
-  {% endif %}
-
 </article>
 

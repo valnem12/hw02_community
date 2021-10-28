@@ -2,9 +2,12 @@
 
 {% extends 'base.html' %}
 
+{% block tab_title %}
+  Последние обновления на сайте
+{% endblock %}
+
 {% block title%}
-  <h1>Последние обновления на сайте</h1>
-  <p></p>
+  Последние обновления на сайте
 {% endblock %}
 
 {% block content %}
@@ -12,6 +15,14 @@
 
   {% for post in posts %}
     {% include 'includes/post_item.html' %}
+
+    {% if post.group %}
+    <a href='{% url 'posts:group_list' post.group.slug %}'>
+      все записи группы {{ post.group.slug }}
+    </a>
+    {% endif %}
+
+    {% include 'includes/post_break_line.html' %}
   {% endfor %}
 
 {% endblock %}

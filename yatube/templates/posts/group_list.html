@@ -2,18 +2,21 @@
 
 {% extends 'base.html' %}
 
+{% block tab_title %}
+  Записи сообщества {{ group.slug }}  
+{% endblock %}
+
 {% block title %}
-  <h1>Записи сообщества {{ group.title }}</h1>
-  <p></p>
-  <p>Группа тайных поклонников {{ group.slug }}
-  <p></p>
+  Записи сообщества {{ group.title }} 
 {% endblock %}
 
 {% block content %}
 <!-- Blog Entries Column -->
+<p>Группа тайных поклонников {{ group.slug }}</p>
 
 {% for post in posts_by_group %}
   {% include 'includes/post_item.html' %}
+  {% include 'includes/post_break_line.html' %}
 {% endfor %}
 
 {% endblock %}

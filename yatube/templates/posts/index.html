@@ -17,9 +17,9 @@
     {% include 'includes/post_item.html' %}
 
     {% if post.group %}
-    <a href='{% url 'posts:group_list' post.group.slug %}'>
-      все записи группы {{ post.group.slug }}
-    </a>
+      <a href='{% url 'posts:group_list' post.group.slug %}'>
+        все записи группы {{ post.group.slug }}
+      </a>
     {% endif %}
 
     {% include 'includes/post_break_line.html' %}

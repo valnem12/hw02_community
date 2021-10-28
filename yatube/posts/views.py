@@ -20,7 +20,7 @@ def group_posts(request, slug):
     template = 'posts/group_list.html'
     group = get_object_or_404(Group, slug=slug)
     posts_by_group = (group
-                      .group_posts
+                      .posts
                       .filter(group=group)[:10])
     context = {
         'group': group,

@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block tab_title %}
-  Записи сообщества {{ group.slug }}  
+  Записи сообщества {{ group.title }}
 {% endblock %}
 
 {% block title %}
@@ -11,12 +11,10 @@
 {% endblock %}
 
 {% block content %}
-<!-- Blog Entries Column -->
-<p>Группа тайных поклонников {{ group.slug }}</p>
 
-{% for post in posts_by_group %}
-  {% include 'includes/post_item.html' %}
-  {% include 'includes/post_break_line.html' %}
-{% endfor %}
+  {% for post in posts_by_group %}
+    {% include 'includes/post_item.html' %}
+    {% include 'includes/post_break_line.html' %}
+  {% endfor %}
 
 {% endblock %}

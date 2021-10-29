@@ -21,7 +21,7 @@ def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     posts_by_group = (group
                       .posts
-                      .filter(group=group)[:10])
+                      .only()[:10])
     context = {
         'group': group,
         'posts_by_group': posts_by_group
